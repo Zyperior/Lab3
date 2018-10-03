@@ -7,7 +7,12 @@ import javafx.scene.input.MouseEvent;
 
 public class Controller {
 
-    public void buttonAction(ActionEvent actionEvent) {
-        ((Button)actionEvent.getSource()).setText("Clicked");
+    Button shapeButtonCircle;
+    Button shapeButtonSquare;
+
+    public void CircleButtonAction(ActionEvent actionEvent) {
+    }
+
+    public void SquareButtonAction(ActionEvent actionEvent) {
     }
 }
