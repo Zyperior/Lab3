@@ -2,9 +2,8 @@ package sample;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
-import javafx.scene.input.MouseEvent;
 
 
 public class Controller {
@@ -13,7 +12,7 @@ public class Controller {
     @FXML
     Button shapeButtonSquare;
     @FXML
-    TextField textField1;
+    Canvas canvas;
 
     Model model = new Model();
 
@@ -29,7 +28,6 @@ public class Controller {
     }
 
     public void init(){
-        model.textProperty().bindBidirectional(textField1.textProperty());
-        shapeButtonSquare.disableProperty().bind(model.disabledProperty());
+
     }
 }
