@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.canvas.Canvas?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.input.KeyCodeCombination?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -47,13 +47,13 @@
             </MenuBar>
          </children>
       </HBox>
-      <Canvas height="337.0" width="601.0" GridPane.rowIndex="2" />
       <HBox alignment="CENTER_LEFT" prefHeight="26.0" prefWidth="600.0" GridPane.hgrow="NEVER" GridPane.rowIndex="1">
          <children>
-            <Button fx:id="shapeButtonCircle" mnemonicParsing="false" text="Circle" onAction="#CircleButtonAction" />
-            <Button fx:id="shapeButtonSquare" mnemonicParsing="false" text="Square" onAction="#SquareButtonAction"/>
+            <Button fx:id="shapeButtonCircle" mnemonicParsing="false" onAction="#CircleButtonAction" text="Circle" />
+            <Button fx:id="shapeButtonSquare" mnemonicParsing="false" onAction="#SquareButtonAction" text="Square" />
             <Button mnemonicParsing="false" text="Button" />
          </children>
       </HBox>
+      <TextField fx:id="textField1" GridPane.rowIndex="2" />
    </children>
 </GridPane>
