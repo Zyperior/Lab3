@@ -25,7 +25,7 @@ public class Model {
 
     public Model(){
 
-        shapeColor = new SimpleObjectProperty<>();
+        shapeColor = new SimpleObjectProperty<>(Color.BLACK);
         shapeWidth = new SimpleDoubleProperty(10);
     }
 
