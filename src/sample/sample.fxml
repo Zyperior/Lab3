@@ -23,7 +23,7 @@
             <TextField id="textFieldWidth" prefHeight="31.0" prefWidth="42.0" />
             <Label prefHeight="31.0" prefWidth="68.0" text="pxls" textAlignment="RIGHT" />
             <Label alignment="CENTER_RIGHT" prefHeight="31.0" prefWidth="68.0" text="Color: " textAlignment="RIGHT" />
-            <ColorPicker id="colorPicker" prefHeight="38.0" prefWidth="97.0" />
+            <ColorPicker fx:id="colorPicker" prefHeight="38.0" prefWidth="97.0" />
          </children>
       </HBox>
       <HBox fillHeight="false" prefHeight="100.0" prefWidth="200.0">

@@ -3,7 +3,7 @@ package sample.canvasObjects;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
-public  abstract class CanvasShape {
+public  abstract class CanvasShape implements Drawable {
 
     private final double canvasXCoord;
     private final double canvasYCoord;
@@ -41,7 +41,6 @@ public  abstract class CanvasShape {
         this.color = color;
     }
 
-    public abstract void draw(GraphicsContext gc);
 
 
 }

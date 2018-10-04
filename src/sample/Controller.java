@@ -14,6 +14,10 @@ import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
+import sample.canvasObjects.CanvasShape;
+import sample.canvasObjects.Drawable;
+import sample.canvasObjects.ShapeFactory;
+import sample.canvasObjects.ShapeType;
 
 
 public class Controller {
@@ -34,23 +38,29 @@ public class Controller {
 
     public void CircleButtonAction(ActionEvent actionEvent) {
 
-        draw();
+        model.setShapeType(ShapeType.CIRCLE);
     }
 
     public void SquareButtonAction(ActionEvent actionEvent) {
 
+        model.setShapeType(ShapeType.SQUARE);
+
     }
 
     public void init(){
-        model.getObservableList().addListener( (ListChangeListener<Point2D>)c -> draw());
+        model.getObservableList().addListener((ListChangeListener<CanvasShape>)c -> drawShapes());
+        model.shapeColorProperty().bindBidirectional(colorPicker.valueProperty());
 
     }
 
     public void canvasClicked(MouseEvent mouseEvent) {
-        Point2D point = new Point2D(mouseEvent.getX(),mouseEvent.getY());
+        double x = mouseEvent.getX();
+        double y = mouseEvent.getY();
+        CanvasShape shape = ShapeFactory.getShape(model.getShapeType(),x-5,y-5,10,model.getShapeColor());
 
         if(mouseEvent.getButton() == MouseButton.PRIMARY){
-            model.getObservableList().add(point);
+            model.getObservableList().add(shape);
+
         }
         if(mouseEvent.getButton() == MouseButton.SECONDARY){
             model.getObservableList().remove(model.getObservableList().size()-1);
@@ -63,16 +73,11 @@ public class Controller {
 
     }
 
-    public void draw(){
-        GraphicsContext gc = canvas.getGraphicsContext2D();
-        gc.clearRect(0,0, canvas.getWidth(),canvas.getHeight());
+    public void drawShapes(){
 
-        Paint p = Color.RED;
-        gc.setFill(p);
+        for (CanvasShape shape: model.getObservableList()) {
 
-        for (Point2D point: model.getObservableList()) {
-
-            gc.fillOval(point.getX()-25,point.getY()-25,50,50);
+            shape.draw(canvas.getGraphicsContext2D());
         }
 
 
