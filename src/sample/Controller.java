@@ -7,6 +7,8 @@ import javafx.geometry.Point2D;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
+import javafx.scene.control.ColorPicker;
+import javafx.scene.control.TextField;
 import javafx.scene.effect.Light;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
@@ -21,14 +23,14 @@ public class Controller {
     Button shapeButtonSquare;
     @FXML
     Canvas canvas;
-
-
-    double xClicked;
-    double yClicked;
+    @FXML
+    ColorPicker colorPicker;
+    @FXML
+    TextField textFieldWidth;
 
     Model model = new Model();
 
-    public Controller(){};
+    public Controller(){}
 
     public void CircleButtonAction(ActionEvent actionEvent) {
 
@@ -40,7 +42,6 @@ public class Controller {
     }
 
     public void init(){
-
         model.getObservableList().addListener( (ListChangeListener<Point2D>)c -> draw());
 
     }

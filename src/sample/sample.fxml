@@ -1,32 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
 <?import javafx.scene.canvas.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.input.*?>
 <?import javafx.scene.layout.*?>
 
-
 <GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
   <columnConstraints>
-    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+    <ColumnConstraints />
   </columnConstraints>
   <rowConstraints>
     <RowConstraints maxHeight="195.0" minHeight="10.0" prefHeight="33.0" valignment="TOP" vgrow="NEVER" />
       <RowConstraints maxHeight="196.0" minHeight="10.0" prefHeight="31.0" valignment="TOP" vgrow="NEVER" />
-    <RowConstraints maxHeight="369.0" minHeight="10.0" prefHeight="339.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="369.0" minHeight="10.0" prefHeight="339.0" vgrow="ALWAYS" />
   </rowConstraints>
    <children>
-      <HBox fillHeight="false" prefHeight="100.0" prefWidth="200.0" GridPane.vgrow="NEVER">
+      <HBox prefHeight="26.0" prefWidth="600.0" GridPane.rowIndex="1" GridPane.vgrow="NEVER">
          <children>
-            <MenuBar prefHeight="32.0" prefWidth="758.0" scaleShape="false" HBox.hgrow="ALWAYS">
+            <Button fx:id="shapeButtonCircle" mnemonicParsing="false" onAction="#CircleButtonAction" text="Circle" />
+            <Button fx:id="shapeButtonSquare" mnemonicParsing="false" onAction="#SquareButtonAction" text="Square" />
+            <Label alignment="CENTER_RIGHT" prefHeight="31.0" prefWidth="81.0" text="Width: " textAlignment="RIGHT" />
+            <TextField id="textFieldWidth" prefHeight="31.0" prefWidth="42.0" />
+            <Label prefHeight="31.0" prefWidth="68.0" text="pxls" textAlignment="RIGHT" />
+            <Label alignment="CENTER_RIGHT" prefHeight="31.0" prefWidth="68.0" text="Color: " textAlignment="RIGHT" />
+            <ColorPicker id="colorPicker" prefHeight="38.0" prefWidth="97.0" />
+         </children>
+      </HBox>
+      <HBox fillHeight="false" prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <MenuBar prefHeight="32.0" prefWidth="758.0" scaleShape="false">
               <menus>
                 <Menu mnemonicParsing="false" text="File">
                   <items>
                     <MenuItem mnemonicParsing="false" text="Save">
                            <accelerator>
                               <KeyCodeCombination alt="UP" code="S" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
-                           </accelerator></MenuItem>
+                           </accelerator>
+                        </MenuItem>
                   </items>
                 </Menu>
                 <Menu mnemonicParsing="false" text="Edit">
@@ -43,19 +53,10 @@
             </MenuBar>
          </children>
       </HBox>
-      <HBox prefHeight="26.0" prefWidth="600.0" GridPane.rowIndex="1" GridPane.vgrow="NEVER">
+      <HBox alignment="CENTER" prefHeight="338.0" prefWidth="85.0" GridPane.rowIndex="2">
          <children>
-            <Button fx:id="shapeButtonCircle" mnemonicParsing="false" onAction="#CircleButtonAction" text="Circle" />
-            <Button fx:id="shapeButtonSquare" mnemonicParsing="false" onAction="#SquareButtonAction" text="Square" />
+            <Canvas fx:id="canvas" height="336.0" onMouseClicked="#canvasClicked" width="599.0" />
          </children>
-      </HBox>
-      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: black;" GridPane.rowIndex="2" GridPane.vgrow="ALWAYS">
-         <children>
-            <Canvas fx:id="canvas" height="334.0" onMouseClicked="#canvasClicked" width="596.0" />
-         </children>
-         <GridPane.margin>
-            <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
-         </GridPane.margin>
       </HBox>
    </children>
 </GridPane>

@@ -1,13 +1,11 @@
 package sample;
 
 
-import javafx.beans.property.BooleanProperty;
-import javafx.beans.property.SimpleBooleanProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
+import javafx.beans.property.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Point2D;
+import javafx.scene.paint.Color;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,16 +13,17 @@ import java.util.List;
 
 public class Model {
 
+    private ObjectProperty<Color> shapeColor;
     private StringProperty text;
     private BooleanProperty disabled;
     private List<Point2D> points = new ArrayList<>();
     private ObservableList<Point2D> observableList = FXCollections.observableList(points);
 
 
+
     public Model(){
         text = new SimpleStringProperty();
         disabled = new SimpleBooleanProperty();
-
     }
 
     public final String getText(){
