@@ -8,9 +8,9 @@ public class ShapeFactory {
 
         switch(type){
             case CIRCLE:
-                return new Circle(xCoord,yCoord,width,color);
+                return new CanvasCircle(xCoord,yCoord,width,color);
             case SQUARE:
-                return new Square(xCoord,yCoord,width,color);
+                return new CanvasSquare(xCoord,yCoord,width,color);
 
         }
 

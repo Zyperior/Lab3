@@ -2,7 +2,7 @@ package sample.canvasObjects;
 
 public enum ShapeType {
 
-    CIRCLE("Circle"),SQUARE("Square");
+    CIRCLE("CanvasCircle"),SQUARE("CanvasSquare");
 
     String name;
 

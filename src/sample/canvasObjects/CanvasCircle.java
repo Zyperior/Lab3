@@ -3,9 +3,9 @@ package sample.canvasObjects;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
-public class Circle extends CanvasShape {
+public class CanvasCircle extends CanvasShape {
 
-    public Circle(double canvasXCoord, double canvasYCoord, double width, Color color) {
+    public CanvasCircle(double canvasXCoord, double canvasYCoord, double width, Color color) {
         super(canvasXCoord, canvasYCoord, width, color);
     }
 

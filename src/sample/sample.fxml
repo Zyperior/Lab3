@@ -20,7 +20,7 @@
             <Button fx:id="shapeButtonCircle" mnemonicParsing="false" onAction="#CircleButtonAction" text="Circle" />
             <Button fx:id="shapeButtonSquare" mnemonicParsing="false" onAction="#SquareButtonAction" text="Square" />
             <Label alignment="CENTER_RIGHT" prefHeight="31.0" prefWidth="81.0" text="Width: " textAlignment="RIGHT" />
-            <TextField id="textFieldWidth" prefHeight="31.0" prefWidth="42.0" />
+            <TextField fx:id="textFieldWidth" prefHeight="31.0" prefWidth="42.0" />
             <Label prefHeight="31.0" prefWidth="68.0" text="pxls" textAlignment="RIGHT" />
             <Label alignment="CENTER_RIGHT" prefHeight="31.0" prefWidth="68.0" text="Color: " textAlignment="RIGHT" />
             <ColorPicker fx:id="colorPicker" prefHeight="38.0" prefWidth="97.0" />
