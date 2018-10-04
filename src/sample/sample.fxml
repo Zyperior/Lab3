@@ -1,34 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
 <?import javafx.scene.canvas.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.input.*?>
 <?import javafx.scene.layout.*?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+<GridPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
   <columnConstraints>
-    <ColumnConstraints />
+    <ColumnConstraints maxWidth="1.7976931348623157E308" />
   </columnConstraints>
   <rowConstraints>
-    <RowConstraints maxHeight="195.0" minHeight="10.0" prefHeight="33.0" valignment="TOP" vgrow="NEVER" />
-      <RowConstraints maxHeight="196.0" minHeight="10.0" prefHeight="31.0" valignment="TOP" vgrow="NEVER" />
-    <RowConstraints maxHeight="369.0" minHeight="10.0" prefHeight="339.0" vgrow="ALWAYS" />
+    <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="32.0" valignment="TOP" vgrow="ALWAYS" />
+      <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="28.0" valignment="TOP" vgrow="NEVER" />
+    <RowConstraints maxHeight="1.7976931348623157E308" minHeight="-Infinity" prefHeight="340.0" vgrow="ALWAYS" />
   </rowConstraints>
    <children>
-      <HBox prefHeight="26.0" prefWidth="600.0" GridPane.rowIndex="1" GridPane.vgrow="NEVER">
+      <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="340.0" prefWidth="600.0" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.vgrow="ALWAYS">
          <children>
-            <Button fx:id="shapeButtonCircle" mnemonicParsing="false" onAction="#CircleButtonAction" text="Circle" />
-            <Button fx:id="shapeButtonSquare" mnemonicParsing="false" onAction="#SquareButtonAction" text="Square" />
-            <Label alignment="CENTER_RIGHT" prefHeight="31.0" prefWidth="81.0" text="Width: " textAlignment="RIGHT" />
-            <TextField fx:id="textFieldWidth" prefHeight="31.0" prefWidth="42.0" />
-            <Label prefHeight="31.0" prefWidth="68.0" text="pxls" textAlignment="RIGHT" />
-            <Label alignment="CENTER_RIGHT" prefHeight="31.0" prefWidth="68.0" text="Color: " textAlignment="RIGHT" />
-            <ColorPicker fx:id="colorPicker" prefHeight="38.0" prefWidth="97.0" />
+            <Canvas fx:id="canvas" height="340.0" onMouseClicked="#canvasClicked" width="600.0" />
          </children>
       </HBox>
-      <HBox fillHeight="false" prefHeight="100.0" prefWidth="200.0">
+      <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="28.0" prefWidth="600.0" GridPane.hgrow="NEVER" GridPane.rowIndex="1">
          <children>
-            <MenuBar prefHeight="32.0" prefWidth="758.0" scaleShape="false">
+            <Button fx:id="shapeButtonCircle" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#CircleButtonAction" prefHeight="28.0" prefWidth="57.0" text="Circle" />
+            <Button fx:id="shapeButtonSquare" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#SquareButtonAction" prefHeight="28.0" prefWidth="66.0" text="Square" />
+            <Label alignment="CENTER_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="28.0" prefWidth="65.0" text="Width: " textAlignment="RIGHT" />
+            <TextField fx:id="textFieldWidth" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="28.0" prefWidth="33.0" />
+            <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="28.0" prefWidth="31.0" text="pxls" textAlignment="RIGHT" />
+            <Label alignment="CENTER_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="28.0" prefWidth="59.0" text="Color: " textAlignment="RIGHT" />
+            <ColorPicker fx:id="colorPicker" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="28.0" prefWidth="105.0" />
+            <HBox alignment="TOP_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="28.0" prefWidth="184.0">
+               <children>
+                  <ToggleButton maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="28.0" prefWidth="104.0" text="Select-mode" />
+               </children>
+            </HBox>
+         </children>
+      </HBox>
+      <HBox fillHeight="false" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="600.0" GridPane.hgrow="ALWAYS">
+         <children>
+            <MenuBar maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="600.0" scaleShape="false" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" HBox.hgrow="ALWAYS">
               <menus>
                 <Menu mnemonicParsing="false" text="File">
                   <items>
@@ -51,11 +63,6 @@
                 </Menu>
               </menus>
             </MenuBar>
-         </children>
-      </HBox>
-      <HBox alignment="CENTER" prefHeight="338.0" prefWidth="85.0" GridPane.rowIndex="2">
-         <children>
-            <Canvas fx:id="canvas" height="336.0" onMouseClicked="#canvasClicked" width="599.0" />
          </children>
       </HBox>
    </children>

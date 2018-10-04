@@ -9,6 +9,7 @@ import javafx.scene.control.ColorPicker;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
+import javafx.util.converter.NumberStringConverter;
 import sample.canvasObjects.CanvasShape;
 import sample.canvasObjects.ShapeFactory;
 import sample.canvasObjects.ShapeType;
@@ -44,13 +45,19 @@ public class Controller {
     public void init(){
         model.getObservableShapeList().addListener((ListChangeListener<CanvasShape>) c -> drawShapes());
         model.shapeColorProperty().bindBidirectional(colorPicker.valueProperty());
+        textFieldWidth.textProperty().bindBidirectional(model.shapeWidthProperty(), new NumberStringConverter());
 
     }
 
     public void canvasClicked(MouseEvent mouseEvent) {
         double x = mouseEvent.getX();
         double y = mouseEvent.getY();
-        CanvasShape shape = ShapeFactory.getShape(model.getShapeType(),x-5,y-5,10,model.getShapeColor());
+        CanvasShape shape = ShapeFactory
+                .getShape(model.getShapeType(),
+                        x-(model.getShapeWidth()/2),
+                        y-(model.getShapeWidth()/2),
+                        model.getShapeWidth(),
+                        model.getShapeColor());
 
         if(mouseEvent.getButton() == MouseButton.PRIMARY){
             model.getObservableShapeList().add(shape);
@@ -76,4 +83,5 @@ public class Controller {
 
 
     }
+
 }
