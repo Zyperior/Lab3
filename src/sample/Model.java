@@ -18,15 +18,16 @@ public class Model {
     private DoubleProperty shapeWidth;
     private ObjectProperty<Color> shapeColor;
 
+    private BooleanProperty selectModeEnabled;
+
     private List<CanvasShape> canvasShapes = new ArrayList<>();
     private ObservableList<CanvasShape> observableShapeList = FXCollections.observableList(canvasShapes);
 
 
-
     public Model(){
-
-        shapeColor = new SimpleObjectProperty<>(Color.BLACK);
+        shapeColor = new SimpleObjectProperty<>();
         shapeWidth = new SimpleDoubleProperty(10);
+        selectModeEnabled = new SimpleBooleanProperty(false);
     }
 
 
@@ -62,6 +63,17 @@ public class Model {
         this.shapeColor.set(shapeColor);
     }
 
+    public boolean isSelectModeEnabled() {
+        return selectModeEnabled.get();
+    }
+
+    public BooleanProperty selectModeEnabledProperty() {
+        return selectModeEnabled;
+    }
+
+    public void setSelectModeEnabled(boolean selectModeEnabled) {
+        this.selectModeEnabled.set(selectModeEnabled);
+    }
 
     public ObservableList<CanvasShape> getObservableShapeList() {
         return observableShapeList;

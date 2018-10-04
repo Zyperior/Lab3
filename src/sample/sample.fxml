@@ -24,8 +24,8 @@
       </HBox>
       <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="28.0" prefWidth="600.0" GridPane.hgrow="NEVER" GridPane.rowIndex="1">
          <children>
-            <Button fx:id="shapeButtonCircle" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#CircleButtonAction" prefHeight="28.0" prefWidth="57.0" text="Circle" />
-            <Button fx:id="shapeButtonSquare" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#SquareButtonAction" prefHeight="28.0" prefWidth="66.0" text="Square" />
+            <Button fx:id="shapeButtonCircle" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#circleButtonAction" prefHeight="28.0" prefWidth="57.0" text="Circle" />
+            <Button fx:id="shapeButtonSquare" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#squareButtonAction" prefHeight="28.0" prefWidth="66.0" text="Square" />
             <Label alignment="CENTER_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="28.0" prefWidth="65.0" text="Width: " textAlignment="RIGHT" />
             <TextField fx:id="textFieldWidth" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="28.0" prefWidth="33.0" />
             <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="28.0" prefWidth="31.0" text="pxls" textAlignment="RIGHT" />
@@ -33,7 +33,7 @@
             <ColorPicker fx:id="colorPicker" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="28.0" prefWidth="105.0" />
             <HBox alignment="TOP_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="28.0" prefWidth="184.0">
                <children>
-                  <ToggleButton fx:id="toggleButtonSelect" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="28.0" prefWidth="104.0" text="Select-mode" onAction="#SelectToggleAction"/>
+                  <ToggleButton fx:id="toggleButtonSelect" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="28.0" prefWidth="104.0" text="Select-mode" onAction="#selectToggleAction"/>
                </children>
             </HBox>
          </children>
