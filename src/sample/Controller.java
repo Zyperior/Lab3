@@ -9,6 +9,7 @@ import javafx.scene.control.ColorPicker;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.paint.Color;
 import javafx.util.converter.NumberStringConverter;
 import sample.canvasObjects.CanvasShape;
 import sample.canvasObjects.ShapeFactory;
@@ -84,4 +85,8 @@ public class Controller {
 
     }
 
+    public void clearCanvas(){
+        canvas.getGraphicsContext2D().setFill(Color.WHITE);
+        canvas.getGraphicsContext2D().fillRect(-100,-100,canvas.getWidth(),canvas.getHeight());
+    }
 }
