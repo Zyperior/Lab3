@@ -3,9 +3,9 @@ package sample.canvasObjects;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
-public class Square extends CanvasShape {
+public class CanvasSquare extends CanvasShape {
 
-    public Square(double canvasXCoord, double canvasYCoord, double width, Color color) {
+    public CanvasSquare(double canvasXCoord, double canvasYCoord, double width, Color color) {
         super(canvasXCoord, canvasYCoord, width, color);
     }
 
