@@ -34,6 +34,8 @@ public class Controller {
     @FXML
     ToggleButton toggleButtonSelect;
 
+    CanvasShape selectedShape;
+
     Model model = new Model();
 
     public Controller(){}
@@ -66,22 +68,49 @@ public class Controller {
         model.setShapeType(ShapeType.SQUARE);
     }
 
-    public void selectToggleAction(ActionEvent actionEvent) {
-    }
-
     public void canvasClicked(MouseEvent mouseEvent) {
         double x = mouseEvent.getX();
         double y = mouseEvent.getY();
-        CanvasShape shape = createShape(x,y);
+        if(!model.isSelectModeEnabled()){
 
-        if(mouseEvent.getButton() == MouseButton.PRIMARY){
-            model.getObservableShapeList().add(shape);
+            CanvasShape shape = createShape(x,y);
+
+            if(mouseEvent.getButton() == MouseButton.PRIMARY){
+                model.getObservableShapeList().add(shape);
+
+            }
+            if(mouseEvent.getButton() == MouseButton.SECONDARY){
+                model.getObservableShapeList().remove(model.getObservableShapeList().size()-1);
+            }
 
         }
-        if(mouseEvent.getButton() == MouseButton.SECONDARY){
-            model.getObservableShapeList().remove(model.getObservableShapeList().size()-1);
+        else{
+
+            setSelectedShape(x,y);
+
         }
 
+
+
+
+    }
+
+    public void setSelectedShape(double x, double y){
+        for (CanvasShape shape : model.getObservableShapeList()) {
+            double xMax = shape.getPoint().getX()+shape.getWidth();
+            double yMax = shape.getPoint().getY()+shape.getWidth();
+            boolean selected = (x >= shape.getPoint().getX() && x <= xMax) &&
+                                (y >= shape.getPoint().getY() && y <= yMax);
+
+            if(shape.isSelected() && selected){
+                shape.setSelected(false);
+            }
+            else{
+                shape.setSelected(selected);
+            }
+
+        }
+        drawShapes();
     }
 
     public CanvasShape createShape(double x, double y){
