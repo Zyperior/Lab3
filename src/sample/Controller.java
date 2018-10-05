@@ -97,6 +97,7 @@ public class Controller {
         for (CanvasShape shape: model.getObservableShapeList()) {
 
             shape.draw(canvas.getGraphicsContext2D());
+
         }
 
 
@@ -121,5 +122,7 @@ public class Controller {
             }
         };
     }
+
+
 
 }
