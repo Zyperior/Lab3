@@ -101,6 +101,7 @@ public class Controller {
                 model.getObservableShapeList().remove(model.getObservableShapeList().size()-1);
             }
 
+
         }
         else{
             setSelectedShape(x,y);
