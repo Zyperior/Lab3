@@ -5,6 +5,7 @@ import javafx.collections.ListChangeListener;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.geometry.Point2D;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Button;
 import javafx.scene.control.ColorPicker;
@@ -18,6 +19,8 @@ import javafx.util.converter.NumberStringConverter;
 import sample.canvasObjects.CanvasShape;
 import sample.canvasObjects.ShapeFactory;
 import sample.canvasObjects.ShapeType;
+
+import java.util.HashMap;
 
 
 public class Controller {
@@ -33,8 +36,10 @@ public class Controller {
     TextField textFieldWidth;
     @FXML
     ToggleButton toggleButtonSelect;
+    @FXML
+    Button buttonMakeChange;
 
-    CanvasShape selectedShape;
+    HashMap<Integer, CanvasShape> selectedShape = new HashMap<>();
 
     Model model = new Model();
 
@@ -47,13 +52,14 @@ public class Controller {
         textFieldWidth.textProperty().bindBidirectional(model.shapeWidthProperty(), new NumberStringConverter());
         shapeButtonCircle.disableProperty().bind(toggleButtonSelect.selectedProperty());
         shapeButtonSquare.disableProperty().bind(toggleButtonSelect.selectedProperty());
+        buttonMakeChange.disableProperty().bind(model.selectModeEnabledProperty().not());
         model.selectModeEnabledProperty().bind(toggleButtonSelect.selectedProperty());
         toggleButtonSelect.textProperty().bind(new When
                 (toggleButtonSelect.selectedProperty())
                 .then("Edit-Mode")
                 .otherwise("Select-Mode"));
 
-        textFieldWidth.addEventFilter(KeyEvent.KEY_TYPED, numericValidation(2));
+        textFieldWidth.addEventFilter(KeyEvent.KEY_TYPED, numericValidation(3));
 
 
         clearCanvas();
@@ -66,6 +72,18 @@ public class Controller {
 
     public void squareButtonAction(ActionEvent actionEvent) {
         model.setShapeType(ShapeType.SQUARE);
+    }
+
+    public void onSelectionToggle(ActionEvent actionEvent) {
+        if(!model.isSelectModeEnabled()){
+            clearSelection();
+            clearCanvas();
+            drawShapes();
+        }
+    }
+
+    public void makeChange(ActionEvent actionEvent) {
+        changeSelectedShape();
     }
 
     public void canvasClicked(MouseEvent mouseEvent) {
@@ -85,32 +103,52 @@ public class Controller {
 
         }
         else{
-
             setSelectedShape(x,y);
 
         }
 
-
-
-
     }
 
     public void setSelectedShape(double x, double y){
-        for (CanvasShape shape : model.getObservableShapeList()) {
+        selectedShape = new HashMap<>();
+
+
+        for (int i = 0; i < model.getObservableShapeList().size(); i++) {
+            CanvasShape shape = model.getObservableShapeList().get(i);
             double xMax = shape.getPoint().getX()+shape.getWidth();
             double yMax = shape.getPoint().getY()+shape.getWidth();
             boolean selected = (x >= shape.getPoint().getX() && x <= xMax) &&
-                                (y >= shape.getPoint().getY() && y <= yMax);
+                    (y >= shape.getPoint().getY() && y <= yMax);
 
             if(shape.isSelected() && selected){
                 shape.setSelected(false);
             }
+            else if(selected){
+                shape.setSelected(selected);
+                selectedShape.put(i, shape);
+            }
             else{
                 shape.setSelected(selected);
             }
-
         }
+        clearCanvas();
         drawShapes();
+    }
+
+    public void changeSelectedShape(){
+
+        if(!selectedShape.isEmpty()){
+            for (CanvasShape shape : selectedShape.values()) {
+                double diffWidth = shape.getWidth()-model.getShapeWidth();
+                shape.setColor(model.getShapeColor());
+                shape.setWidth(model.getShapeWidth());
+                shape.setPoint(new Point2D(shape.getPoint().getX()+(diffWidth/2),(shape.getPoint().getY()+(diffWidth/2))));
+                model.getObservableShapeList().remove((int)selectedShape.keySet().toArray()[0]);
+                clearCanvas();
+                model.getObservableShapeList().add((int)selectedShape.keySet().toArray()[0],shape);
+            }
+        }
+
     }
 
     public CanvasShape createShape(double x, double y){
@@ -129,6 +167,18 @@ public class Controller {
 
         }
 
+
+    }
+
+    public void clearSelection(){
+
+        for (CanvasShape shape: model.getObservableShapeList()) {
+
+            shape.setSelected(false);
+
+        }
+
+        this.selectedShape = null;
 
     }
 
@@ -151,7 +201,4 @@ public class Controller {
             }
         };
     }
-
-
-
 }

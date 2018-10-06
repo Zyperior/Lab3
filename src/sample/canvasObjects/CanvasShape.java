@@ -2,13 +2,12 @@ package sample.canvasObjects;
 
 import javafx.geometry.Point2D;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.effect.Effect;
 import javafx.scene.paint.Color;
 
 public class CanvasShape implements Drawable {
 
     private final ShapeType shapeType;
-    private final Point2D point;
+    private Point2D point;
     private double width;
     private Color color;
     private Color strokeColor;
@@ -35,6 +34,10 @@ public class CanvasShape implements Drawable {
 
     public Point2D getPoint() {
         return point;
+    }
+
+    public void setPoint(Point2D point){
+        this.point = point;
     }
 
     public boolean isSelected() {
@@ -96,9 +99,6 @@ public class CanvasShape implements Drawable {
 
             }
         }
-
-
-
 
     }
 }
