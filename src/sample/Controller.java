@@ -6,20 +6,22 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.geometry.Point2D;
+import javafx.scene.Node;
 import javafx.scene.canvas.Canvas;
-import javafx.scene.control.Button;
-import javafx.scene.control.ColorPicker;
-import javafx.scene.control.TextField;
-import javafx.scene.control.ToggleButton;
+import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
+import javafx.stage.Stage;
+import javafx.stage.Window;
 import javafx.util.converter.NumberStringConverter;
 import sample.canvasObjects.CanvasShape;
 import sample.canvasObjects.ShapeFactory;
 import sample.canvasObjects.ShapeType;
+import sample.filesaving.SaveToBmp;
 
+import java.sql.SQLOutput;
 import java.util.HashMap;
 
 
@@ -38,12 +40,20 @@ public class Controller {
     ToggleButton toggleButtonSelect;
     @FXML
     Button buttonMakeChange;
+    @FXML
+    MenuItem saveToBmp;
+
+    Stage stage;
 
     HashMap<Integer, CanvasShape> selectedShape = new HashMap<>();
 
     Model model = new Model();
 
     public Controller(){}
+
+    public void setStage(Stage stage) {
+        this.stage = stage;
+    }
 
     public void init(){
         model.getObservableShapeList().addListener((ListChangeListener<CanvasShape>) c -> drawShapes());
@@ -111,8 +121,8 @@ public class Controller {
     }
 
     public void setSelectedShape(double x, double y){
-        selectedShape = new HashMap<>();
 
+        selectedShape = new HashMap<>();
 
         for (int i = 0; i < model.getObservableShapeList().size(); i++) {
             CanvasShape shape = model.getObservableShapeList().get(i);
@@ -168,7 +178,6 @@ public class Controller {
 
         }
 
-
     }
 
     public void clearSelection(){
@@ -178,8 +187,6 @@ public class Controller {
             shape.setSelected(false);
 
         }
-
-        this.selectedShape = null;
 
     }
 
@@ -201,5 +208,11 @@ public class Controller {
 
             }
         };
+    }
+
+    public void saveToBmpAction(ActionEvent actionEvent) {
+
+        SaveToBmp save = new SaveToBmp((int)canvas.getWidth(),(int)canvas.getHeight(),canvas,stage);
+        save.saveToFile();
     }
 }
