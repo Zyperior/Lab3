@@ -39,10 +39,10 @@ public class SaveToBmp {
         this.file = file;
     }
 
-    public Window getStage() {
+    public Window getWindow() {
         return window;
     }
-    public void setStage(Window window) {
+    public void setWindow(Window window) {
         this.window = window;
     }
 
